@@ -1,0 +1,31 @@
+.search-container input,
+.search-container button {
+    outline: none;
+    font-size: 1em;
+    border: none;
+}
+
+#search-btn {
+    border: 1px solid #ffffff11;
+    outline: 0;
+    background: #bac0c778;
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.search-container input {
+    padding: 0.7em;
+    background-color: transparent;
+    border-bottom: 2px solid var(--transp-white-1);
+    color: var(--white);
+    font-weight: 300;
+}
+
+.search-container input::placeholder {
+    color: var(--off-white);
+}
+
+.search-container input:focus {
+    border-color: var(--white);
+}

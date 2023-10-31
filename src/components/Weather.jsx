@@ -1,4 +1,4 @@
-import React from "../../weather app/node_modules/@types/react";
+import React from "react";
 
 const Weather = ({ weatherData }) => {
     return (
@@ -8,11 +8,11 @@ const Weather = ({ weatherData }) => {
             <img src={`https://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`} alt="Weather Icon" />
             <h1 className="temp">{weatherData.main.temp} °C</h1>
             <div className="temp-container">
-                <div>
+                <div className="feature">
                     <h4 className="title">Lowest Temperature</h4>
                     <h4 className="temp">{weatherData.main.temp_min} °C</h4>
                 </div>
-                <div>
+                <div className="feature">
                     <h4 className="title">Highest Temperature</h4>
                     <h4 className="temp">{weatherData.main.temp_max} °C</h4>
                 </div>
