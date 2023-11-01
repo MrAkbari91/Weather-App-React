@@ -3,37 +3,27 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Weather from './components/Weather';
 import WeatherForm from './components/WeatherForm';
+import useApiRequests from './components/useApiRequests';
 
 
-
-function App() {
-  const API_KEY = 'ca799e241c694d886db7c9f33b5dbedd';
+const App = () => {
+  // const API_KEY = 'ca799e241c694d886db7c9f33b5dbedd';
   const [errorMsg, setErrorMsg] = useState("");
   const [units, setUnits] = useState("metric");
   const [city, setCity] = useState('');
 
-  const { error, locationData, weatherData } = useApiRequests(prompt);
-
-
-  // const fetchWeatherData = async (cityName) => {
-  //   try {
-  //     const response = await axios.get(
-  //       `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}&units=metric`
-  //     );
-  //     console.log(weatherData);
-  //     setWeatherData(response.data);
-  //   } catch (error) {
-  //     console.error('Error fetching weather data:', error);
-  //   }
-  // };
-
+  const { error, weatherData } = useApiRequests(city);
   useEffect(() => {
-    axios.get('https://ipapi.co/json/').then((response) => {
-      const userCity = response.data.city;
-      if (userCity) {
-        fetchWeatherData(userCity);
-      }
-    });
+    fetch('https://ipapi.co/json/')
+      .then(response => response.json())
+      .then(data => {
+        const userCity = data.city;
+        setCity(userCity);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+
   }, []);
 
   useEffect(() => {
@@ -49,11 +39,9 @@ function App() {
 
   const handleSearch = (city) => {
     if (city) {
-      fetchWeatherData(city);
       setCity(city);
     }
   };
-
 
   return (
     <div className="App">
@@ -62,7 +50,7 @@ function App() {
         <div className="shape shape-2"></div>
         <div className="container">
           <WeatherForm onSubmit={handleSearch} />
-          {weatherData && <Weather weatherData={weatherData} />}
+          {weatherData && Object.keys(weatherData).length > 0 && (<Weather weatherData={weatherData} />)}
         </div>
       </div>
     </div>

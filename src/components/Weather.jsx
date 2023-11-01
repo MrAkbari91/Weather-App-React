@@ -16,6 +16,14 @@ const Weather = ({ weatherData }) => {
                     <h4 className="title">Highest Temperature</h4>
                     <h4 className="temp">{weatherData.main.temp_max} °C</h4>
                 </div>
+                <div className="feature">
+                    <h4 className="title">Humidity</h4>
+                    <h4 className="temp">{weatherData.main.humidity} %</h4>
+                </div>
+                <div className="feature">
+                    <h4 className="title">Highest Temperature</h4>
+                    <h4 className="temp">{weatherData.main.temp_max} °C</h4>
+                </div>
             </div>
         </div >
     )
