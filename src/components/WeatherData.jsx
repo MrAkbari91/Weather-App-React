@@ -1,10 +1,9 @@
 import PropTypes from "prop-types";
 
-const WeatherData = async ( city) => {
+const WeatherData = async (cityName) => {
     try {
         const API_KEY = 'ca799e241c694d886db7c9f33b5dbedd'
-        // const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${locationData[0].lat}&lon=${locationData[0].lon}&appid=${API_KEY}&units=metric`);
-        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}&units=metric`);
         const weatherData = await response.json();
         return weatherData;
     } catch (error) {

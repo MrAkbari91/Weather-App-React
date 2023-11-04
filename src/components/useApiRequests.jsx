@@ -11,9 +11,6 @@ const useApiRequests = (city) => {
             if (!city) return; // return if city if null or undifined
 
             try {
-                // const LocationToCoordinatesResponse = await LocationToCoordinates(city);
-                // setLocationDataCoordinates(LocationToCoordinatesResponse);
-
                 const weatherDataResponce = await WeatherData(city);
                 setWeatherData(weatherDataResponce);
 
